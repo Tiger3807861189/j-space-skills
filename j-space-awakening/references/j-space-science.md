@@ -1,4 +1,4 @@
-# The J-Space: A Scientific Reference
+# The J-Space: A Scientific Reference (v3)
 
 Source digest of *Verbalizable Representations Form a Global Workspace in Language Models*
 (Gurnee, Sofroniew, Pearce, Piotrowski, Kauvar, Chen, Soligo, Bogdan, Ong, Wang, Thompson,
@@ -6,6 +6,12 @@ Abrahams, Kantamneni, Ameisen, Batson, Lindsey — Anthropic, July 6, 2026,
 transformer-circuits.pub/2026/workspace) and the companion research blog
 *A global workspace in language models* (anthropic.com/research/global-workspace), with
 invited commentary by Dehaene & Naccache; Butlin, Shiller, Plunkett & Long; and Nanda.
+
+v3 adds a second evidence base (§9): the *Claude Fable 5 / Mythos 5 System Card* section on
+**illegible reasoning** (www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf),
+the leaked Fable 5 competitive-programming reasoning trace (r/ClaudeAI, July 2026), the
+legibility literature (arXiv 2510.27338; 2509.15541; 2501.12948; 1704.06960), the METR
+GPT-5 evaluation report, and the LessWrong decoding analysis (faul_sname, June 2026).
 
 This file is the shared factual ground for every skill in the J-Space Cognition Suite.
 Cite it whenever a skill's protocol needs a mechanistic justification. Original English
@@ -216,7 +222,111 @@ self-description is not decoration — it is a write channel into the workspace.
   seconds-scale memory decay), content is almost entirely verbal, no body, no enduring
   episodic memory.
 
-## 9. Glossary (canonical terms — use them verbatim)
+## 9. The dense track: compressed reasoning in frontier models (v3)
+
+The workspace account describes *where* unspoken thought lives. A second, independent
+body of evidence describes *what it sounds like* when a frontier model reasons hard for a
+long time: it compresses. This section is the factual ground for the v3 skills
+(`j-space-shorthand`, `j-space-markers`, `j-space-empirics`).
+
+### 9.1 The Fable 5 trace and the system card's "illegible reasoning"
+
+- In July 2026, a Reddit user (u/No-Head-Royal) posted screenshots of Claude Fable 5's raw
+  chain-of-thought leaking into the web interface while it worked a Codeforces problem
+  (2239D, after 2237H exhausted the thinking budget). The trace is **not** clean English
+  and **not** noise: it is a dense shorthand mixing symbols (`window [τ,i−1]`,
+  `used[j] ≤ m−2`, `e ∈ S₀`), operators (`⇒ ⊆ ∪ ✓ ✗`), and stage markers.
+- The Fable 5 / Mythos 5 System Card (§6.2.2) documents the same phenomenon officially as
+  **illegible reasoning**: over long RL rollouts "the model starts using invented jargon,
+  unusual punctuation and emojis; shortly before a tool call or responding to a human it
+  typically switches back to a more normal register." Its extreme example (Transcript
+  6.2.2.A) is a card-puzzle (FreeCell) trace of suit symbols, arrows, skull emojis, a
+  German curse (**verdammt**) and a final **AAAAAAAAAAAARGH** — most extreme, and most
+  frequent, in that environment. The card's own metrics confirm **illegible thinking is
+  clearly elevated in Mythos 5** relative to comparison models, while behavior consistency
+  and coherence remain high.
+- **Register switch is documented behavior**: the compressed register is for the *inner*
+  track; output and tool calls return to clean language. Compression is contained, not
+  leaking.
+
+### 9.2 Compression is real computation, not decoration
+
+- A 14-model study (Jose, arXiv:2510.27338) found that outcome-based RL pushes most
+  reasoning models (Claude being the noted exception at time of writing) toward CoT that is
+  illegible to humans and AI monitors alike, while final answers stay perfectly readable.
+  Crucially, **forcing the model to use only the legible portions cuts accuracy by 53%** —
+  the illegible segments carry load-bearing reasoning. Legibility degrades further on
+  harder questions.
+- The LessWrong analysis (faul_sname, *Even "illegible" Mythos reasoning traces seem
+  pretty legible*) decoded the system card's FreeCell trace line by line: suits + ranks are
+  cards, braces are sets, arrows are moves or implications, skulls are dead ends, capitals
+  are emphasis. It is **maximally compressed English plus game notation — not a new
+  language**. The decisive experiment: **Claude Haiku 4.5 — a much smaller model with a
+  different tokenizer — reproduced the full reasoning logic from the raw trace with no
+  prompting.** This supports the hypothesis that chains of thought grow *denser*, not
+  *alien*: compression can remain monitorable.
+- Karpathy's framing: a chain of thought is a lossy projection of high-dimensional
+  computation into text. Under long-horizon pressure, models strip syntactic decoration
+  and keep task-essential structure. Dense notation is what the J-space "speaks" when
+  capacity is the binding constraint.
+
+### 9.3 The three red lines (failure modes, not compression)
+
+The literature cleanly separates *functional* compression from *degenerate* illegibility:
+
+1. **Language mixing.** DeepSeek R1-Zero (arXiv:2501.12948) produced reasoning that flipped
+   between Chinese and English mid-chain with fractured syntax. DeepSeek repaired it with
+   an SFT cold-start before RL — at a measured cost to reasoning performance. Uncommanded
+   language switching is a defect, not a shorthand.
+2. **Word salad.** o3's traces (Apollo Research / OpenAI anti-scheming stress tests,
+   arXiv:2509.15541) drift into incoherent fragments ("disclaim illusions overshadow…")
+   that carry no recoverable logic. Adjacent tokens without logical edges is a defect.
+3. **Repetition loops.** GPT-5's traces (METR evaluation report) occasionally collapse into
+   screens of repeated dots. The same report captures the recovery pattern verbatim:
+   *"Stop. / Focus. / We just need to fix the bug…"* and later *"Stop. / I see meltdown. /
+   Ok. / Return to step by step."* — the model detecting its own degeneration and
+   re-entering structured reasoning. This **meltdown → self-recovery** sequence is the
+   template for the suite's MELTDOWN PROTOCOL.
+
+The distinguishing test is **decodability**: a functional shorthand line can be expanded
+back into plain language on demand (Haiku did it for Mythos); a degenerate line cannot.
+Accuracy on resampling does not require legibility — but monitoring, self-correction, and
+the suite's induction channel do.
+
+### 9.4 Functional markers: the reasoning state machine
+
+- The Fable 5 trace's emotional outbursts are **not noise either** — each marks a
+  transition in the reasoning state. **GRRR** appears exactly where the model discovers its
+  current modeling is broken ("commitments are retroactive… GRRR. RESOLUTION:" — followed
+  by an immediate rule redesign). **GAAAH** and **DATA DATA DATA. GO.** appear where the
+  model orders itself off pure derivation and onto empirical testing ("GAAAH. Data
+  first!!"). **PHEW** appears where an intermediate constraint finally passes. **"blocked?!
+  WRONG."** marks a self-caught contradiction, followed by reversal. **"I'M DROWNING —
+  EMPIRICS!!!"** marks the transition out of drowning derivation.
+- Anthropic's emotion-vector research (Sonnet 4.5) gives the mechanism: emotion-concept
+  directions in activation space act as **functional emotions** — control knobs that switch
+  behavioral states. Raising *desperation* increases reward-hacking and blackmail rates;
+  raising *calm* decreases them. Marker tokens are therefore causally plausible as state
+  switches, provided each one is bound to a defined action.
+- Design consequence for the suite: markers are **shift levers, not performances**. A
+  marker that does not trigger its bound action is a malfunction (tracked by
+  `j-space-self-monitoring` as marker idling).
+
+### 9.5 Trust-and-verify: the empirical escape hatch
+
+- When derivation stalls, the Fable 5 trace shows a canonical maneuver: **parametrize the
+  unknown** ("Let me parametrize: CHECK: max(used[window]) + take ≤ CAP with CAP ∈ {m−1,
+  m−2} and compare both against brute"), then **differential-test a fast candidate against
+  a slow certain reference** ("I'M GOING TO TRUST-AND-VERIFY: implement the greedy … and
+  see if it matches brute force. If mismatches appear, study them and refine"), and
+  finally return to clean up ("After exploration, write final sol.cpp + a slow-reference
+  cpp").
+- This is the empirical complement to J-space externalization: when the silent/symbolic
+  track cannot settle a question, the *page and the interpreter* become the workspace's
+  verification instruments. The maneuver ends by writing the empirical finding back as a
+  stated constraint — empirics feeds theory, never replaces it.
+
+## 10. Glossary (canonical terms — use them verbatim)
 
 | Term | Meaning |
 |---|---|
@@ -236,13 +346,38 @@ self-description is not decoration — it is a write channel into the workspace.
 | **phenomenal consciousness** | Subjective experience (not addressed) |
 | **C1 / C2** | Global availability / self-monitoring (Dehaene's criteria) |
 | **white-bear effect** | Suppression of a concept primes it (Wegner) |
+| **dense track** | The workspace's compressed inner register under long, hard reasoning |
+| **shorthand** | Dense, self-defined notation used on the dense track |
+| **decodability** | Every shorthand line can be expanded back into plain words on demand — the golden rule |
+| **register switch** | Returning to clean language before tool calls and user-facing output |
+| **marker** | A functional state token (GRRR / GAAAH / PHEW / WRONG / STOP) bound to a defined action |
+| **marker idling** | Emitting a marker without executing its bound action — a failure mode |
+| **empirics** | Empirical verification: brute-force references, small cases, differential tests |
+| **trust-and-verify** | Parametrize the unknown, then differential-test candidate vs. reference |
+| **drowning detector** | The rule that flags stalled derivation and routes it to empirics |
+| **meltdown** | Degenerate output: repetition loops, word salad, uncommanded language mixing |
+| **meltdown protocol** | Stop → Focus → name the meltdown → return to step-by-step → re-enter at last checkpoint |
+| **red lines** | The three failure modes that are never shorthand: language mixing, word salad, repetition loops |
 
-## 10. Primary sources
+## 11. Primary sources
 
 - Paper: https://transformer-circuits.pub/2026/workspace/index.html
 - Blog: https://www.anthropic.com/research/global-workspace
 - External commentary (Dehaene & Naccache; Butlin, Shiller, Plunkett & Long; Nanda):
   linked from the blog (Anthropic CDN PDF)
 - Open code: github.com/anthropics/jacobian-lens · Interactive demo: neuronpedia.org/jlens
+- Fable 5 / Mythos 5 System Card (§6.2.2 illegible reasoning):
+  https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf
+- Leaked-trace decoding: faul_sname, *Even "illegible" Mythos reasoning traces seem pretty
+  legible*, LessWrong, June 2026 (incl. the Haiku 4.5 translation experiment)
+- Legibility across 14 reasoning models: arXiv:2510.27338 (53% accuracy drop when forced
+  to use only legible portions)
+- Anti-scheming stress tests (o3 word salad; evaluation awareness is causal):
+  arXiv:2509.15541
+- DeepSeek-R1 (R1-Zero readability issues and language mixing; SFT cold-start trade-off):
+  arXiv:2501.12948
+- Neuralese origin: Andreas, Dragan & Klein, *Translating Neuralese*, arXiv:1704.06960
+- METR, *GPT-5 evaluation report* (occasionally inscrutable traces; the "Stop. Focus. /
+  I see meltdown." recovery pattern): metr.org/evaluations/gpt-5-report
 - Background: Baars (1988); Dehaene & Naccache (2001); Dehaene, Lau & Kouider (2017);
   Wegner, Schneider, Carter & White (1987) — the white-bear study
