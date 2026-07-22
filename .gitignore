@@ -1,0 +1,47 @@
+# ===== Dependencies =====
+node_modules/
+.pnp/
+.pnp.js
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ===== Environment & secrets =====
+.env
+.env.*
+*.env
+*.local
+*.pem
+*.key
+*.p12
+*.crt
+secrets.json
+
+# ===== Build output =====
+# Note: dist/ (packaged skill .zip files) is intentionally TRACKED per user request
+build/
+out/
+*.tar.gz
+
+# ===== Logs & temp =====
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+.cache/
+.temp/
+tmp/
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ===== Editor / IDE =====
+.vscode/
+.idea/
+*.sublime-*
+*.suo
+*.user
