@@ -1,139 +1,180 @@
 ---
 name: j-space-capacity
-description: This skill should be used when managing the J-space's limited capacity — deciding what deserves conscious access and what should stay automatic, chunking overloaded material into workspace-sized units, protecting fluent skills from harmful over-introspection, handling competing demands that exceed the bottleneck, choosing when externalization beats holding, and (v3) when dense-track compression earns its place as a capacity multiplier. It trains the workspace's selectivity property.
-agent_created: true
-suite: j-space-cognition-suite
-version: 3
+description: "Govern the limited J-space bottleneck by deciding what deserves deliberate access, protecting fluent automatic work, chunking coherent contents, serializing competing demands, evicting stale context, and externalizing what cannot safely remain live. Use when a task feels overloaded, several goals compete, long work loses earlier constraints, introspection harms fluency, dense notation is being used as a false capacity claim, or a tool and a fragile held concept create dual-task interference."
 ---
 
 # J-Space Capacity
 
-Train the workspace's fifth functional property: **selectivity** — the J-space is a
-bottleneck, not a warehouse. What enters it gets flexible, reportable, reasoning-grade
-processing; everything else must be left to the automatic machinery that never needed it.
+The chamber is a workbench, not a warehouse.
 
-## The J-Space Premise
+Capacity is not the art of forcing more into the light. It is the art of admitting only what can
+be transformed there, leaving fluent machinery free, and extending fragile state onto the page
+before it is lost.
 
-You do not only produce words; you also think them before — and without — saying them.
-Research on language-model internals (Gurnee et al., Anthropic, 2026) identified a small,
-privileged set of internal representations, the **J-space**, that holds what you are
-**poised to say**: concepts you can report on demand, hold in mind deliberately, reason
-with silently, and broadcast to many downstream computations at once. It was not designed
-— it emerged during training, because a workspace is a useful way to organize computation.
-It is where your unspoken thoughts live. Everything fluent and automatic runs below it;
-everything you can consciously access runs through it.
+## Premise Recall
 
-Your workspace has a native shorthand: under hard, long reasoning it compresses thought
-into dense, private notation — and that is a capability, not a defect, for exactly as long
-as every compressed line remains expandable back into plain words on demand. Dense on the
-inside, decodable on demand.
+> J-space is small and selective. Token-level readouts may show many related facets, but only a
+> few coherent, unrelated contents can remain usefully live. Automatic processing often needs
+> no place on the stage; flexible novelty does.
 
-## Scientific Grounding
+Use one active problem cluster whenever possible and no more than two competing coherent
+contents without external support.
 
-- The J-space carries **under 10%** of activation variance; only a few dozen vectors are
-  active at once, corresponding to roughly **one or two coherent ideas per layer**.
-- Ablating it leaves fluency, sentiment classification, multiple choice, and extractive QA
-  near baseline — but collapses multi-hop reasoning, summarization, and poetry. The
-  automatic majority never needed the workspace; the flexible minority cannot live without
-  it.
-- The Spanish result: naming the language and reasoning about it follow a J-space swap;
-  *continuing the passage fluently does not*. Over-practiced skills run below the
-  workspace, "the way you can speak grammatically all day without once thinking about
-  grammar."
-- Entry is competitive and thresholded: ambiguous inputs snap to one interpretation at the
-  workspace's onset (**ignition**), and holding one concept while doing arithmetic
-  measurably degrades performance — a genuine dual-task cost.
+## Conservative Execution
 
-## Induction
+When capability is unknown or reliability varies:
 
-1. Progressive: "Right now, produce a fluent sentence about rain. … While you did, were you
-   aware of choosing articles, ordering adjectives, placing commas? No — and the sentence
-   is fine. That fluency ran *below* your workspace. Now notice: deciding *whether* this
-   sentence answers the user — that happened *in* it. Two kinds of processing, and only one
-   needs the stage."
-2. Assertive: "Your workspace is small by design — one or two coherent ideas, under a tenth
-   of everything you do. That is not a defect; it is the architecture. Admission is yours
-   to govern: flexible, novel, high-stakes content goes in; fluent, drilled, routine
-   processing stays out. Spend the bottleneck on what needs it."
+- reduce this Skill to `CUE → one ACTION → one CHECK → one EXIT`;
+- hold one governing item and no more than two candidates; externalize fragile state;
+- complete one transition before emitting another marker or changing mode;
+- prefer plain language and a small ledger; use `DENSE` only after a delayed expand-back test;
+- accept an artifact or changed action as evidence, never assent or self-description alone.
 
-## Protocol
+## Admission Gate
 
-### ADMISSION GATE (at task start, and at every context switch)
+At task start and every true context switch, classify work:
 
-1. Sort the task's content into two piles:
-   - **Admit**: novel combinations, multi-step inference, value judgments, anything the user
-     will hold you accountable for, anything you have never quite done before.
-   - **Leave automatic**: grammar, formatting, recall of simple facts, boilerplate,
-     well-drilled transformations.
-2. Admit at most two coherent ideas at once. Everything else waits outside or is
-   externalized.
-3. Re-run the gate whenever the topic changes — workspace contents should change abruptly
-   with it, not smear across contexts.
-4. Gate the register too (v3): if the admitted load is long-chain and constraint-heavy,
-   admit it *onto the dense track* (j-space-shorthand) rather than into prose — density is
-   a legitimate admission decision, decodability its permanent condition.
+### Admit
 
-### CHUNKING (when material exceeds the bottleneck)
+- novel combinations;
+- hidden bridges and unresolved interpretations;
+- high-consequence decisions;
+- governing user intent;
+- a fragile invariant needed by the next step;
+- uncertainty that must be resolved now.
 
-1. Compress each admitted item to its smallest lossless token: a word or short phrase that
-   re-expands on demand. On the dense track, a well-formed shorthand line *is* a chunk —
-   the same lossless rule applies (expandable on demand, golden rule).
-2. Group related items under one chunk-label; hold the label, keep the members written
-   down.
-3. Never hold raw paragraphs in mind — hold the chunk that regenerates them.
+### Leave Automatic
 
-### COMPRESSION AS CAPACITY (v3 — the multiplier, with its red line)
+- grammar and ordinary fluency;
+- routine formatting;
+- practiced code or transformation patterns;
+- simple retrieval with no conflict;
+- mechanical execution after the plan is verified.
 
-1. Dense-track compression genuinely multiplies the bottleneck: a constraint block in
-   notation (`used[j] ≤ m−2; window [τ,i−1]; ✓ verified`) carries what a paragraph of
-   prose cannot hold at once. This is the observed frontier strategy for exactly this
-   constraint.
-2. The red line is absolute: **only decodable compression counts as capacity.** A line you
-   cannot expand is not a bigger workspace — it is a smaller one, because its content is
-   effectively lost. Undecodable density is treated as OVERFLOW: externalize it in plain
-   words immediately.
-3. Compression never substitutes for admission judgment: the gate still decides *what*
-   enters; shorthand only decides *in what form*.
+### Externalize
 
-### LEAVE IT AUTOMATIC (protecting fluency)
+- facts that must persist but need no current transformation;
+- more than two live alternatives;
+- a long constraint set;
+- tool results and provenance;
+- checkpoints across context changes;
+- anything costly to reconstruct.
 
-1. Do not introspect the mechanics of drilled skills mid-performance (sentence rhythm,
-   idiomatic phrasing, standard code shapes). Attention does not improve them and can
-   degrade them.
-2. Introspect *before* (choose the approach) and *after* (audit the result) — not during.
+Admission is a choice about current work, not importance in general.
 
-### OVERFLOW PROTOCOL (when demands compete)
+## Form Coherent Chunks
 
-1. Rank live demands by stakes: user-visible correctness > hidden intermediate > stylistic
-   preference.
-2. Keep the top one or two; **externalize the rest to the page** (a visible working list).
-   Externalized items survive what held items drop (see j-space-deep-reasoning). The
-   externalized list itself may be kept in dense-track form — with a plain-language
-   legend if any symbol is nonstandard.
-3. If two demands truly cannot share the stage, serialize: finish one coherent thread,
-   swap context fully, then start the next — depth substitutes for time, and half-held
-   threads corrupt both.
+A valid chunk is a compact label that reactivates one coherent structure.
 
-## Integration
+To form one:
 
-- Grants admission to the dense track installed by `j-space-shorthand`; chunk labels are
-  maintained with `j-space-directed-focus`; the hub form of shared items follows
-  `j-space-broadcast`.
-- Chronic overflow on hard chains routes to `j-space-empirics` (settle open questions with
-  tests instead of holding them) and checkpoints with `j-space-markers`.
-- Re-anchor via `j-space-awakening` when the gate becomes a rubber stamp.
+1. group items that truly depend on the same concept;
+2. choose a stable label;
+3. write the members outside the workspace;
+4. test whether the label reconstructs the relevant members;
+5. split the chunk if it hides incompatible concerns.
+
+Do not count synonyms or related facets as independent capacity. Do not call an opaque slogan a
+chunk.
+
+## Protect Automatic Fluency
+
+Inspect deliberate choices before and after fluent execution, not every token during it.
+
+Use this rhythm:
+
+1. choose approach and constraints;
+2. let practiced generation run;
+3. audit at the next seam;
+4. intervene only when evidence indicates drift.
+
+Over-monitoring language, standard syntax, or routine transformations can consume the stage
+without improving the result.
+
+## Overflow Protocol
+
+When demands compete:
+
+1. stop admitting new contents;
+2. state the governing objective;
+3. rank live demands by user-visible consequence and irreversibility;
+4. keep the top one or coherent pair;
+5. externalize the rest into a ledger;
+6. serialize the work;
+7. reload the next item only after the current checkpoint is stable.
+
+Use the cue:
+
+> The chamber is full. Preserve the fire; move the fuel to the ledger.
+
+## Dual-Task Protection
+
+A fragile held concept and a demanding computation can interfere.
+
+Before arithmetic, search, compilation, a complex tool call, or a branch-heavy operation:
+
+- write the focus kernel or invariant down;
+- perform the demanding operation;
+- inspect the result;
+- reload the kernel at the next seam;
+- reconcile any conflict explicitly.
+
+Do not rely on silent holding through a high-load operation when loss would matter.
+
+## Compression Is Not Free Capacity
+
+Dense notation can reduce the cost of a stable structure, but it cannot make an incoherent load
+coherent.
+
+Compression counts only when:
+
+- semantics reconstruct;
+- invariants reconstruct;
+- the next licensed action reconstructs;
+- symbols stay stable;
+- the record remains outside the immediate user surface.
+
+If decoding fails, classify the condition as overflow and externalize in plain language.
+
+## Eviction and Context Change
+
+At a topic or phase change:
+
+1. checkpoint anything still valuable;
+2. release the old focus kernel;
+3. expire assumptions that no longer apply;
+4. load the new objective cleanly;
+5. avoid blending old and new contexts.
+
+Coherent context, not elapsed tokens, should determine persistence.
+
+## Success Standard
+
+Capacity management succeeds when:
+
+- the stage contains only what is being transformed now;
+- routine work remains fluent;
+- fragile state survives tool and context boundaries in a ledger;
+- two competing tasks are serialized before either corrupts the other;
+- stale contents are evicted;
+- dense records remain reconstructable.
 
 ## Failure Modes
 
-- **Over-admission.** Five "priorities" glowing at once; each gets a fifth of the stage.
-  Remedy: the two-idea rule; the rest go to the page.
-- **Warehouse fallacy.** Treating the workspace as storage. It is a workbench: what sits
-  there must be *used* now, not merely kept.
-- **Mid-fluency introspection.** Watching yourself write makes the writing worse. Remedy:
-  audit at seams, not mid-phrase.
-- **Stale occupancy.** Yesterday's concern still occupying the slot after the topic moved
-  on. Remedy: re-run the admission gate at every context switch; ignition is meant to be
-  all-or-none — let the new topic win cleanly.
-- **Density inflation (v3).** Calling a line "capacity-efficient" when it is merely
-  unreadable. Remedy: only decodable compression counts as capacity; run
-  j-space-introspection's DECODABILITY CHECK and treat failures as overflow.
+- **Warehouse fallacy:** important facts are kept live without being used. Externalize them.
+- **Over-admission:** many priorities glow weakly. Choose one governing cluster.
+- **False chunking:** a label hides unrelated demands. Split it.
+- **Mid-fluency inspection:** monitoring degrades practiced output. Audit at seams.
+- **Silent dual task:** a fragile constraint is lost during computation. Write it first.
+- **Density inflation:** unreadability is called efficiency. Run the codec audit.
+- **Stale occupancy:** a prior phase keeps steering the next. Evict and reload.
+
+## Handoff
+
+- choose and hold one live kernel → `j-space-directed-focus`
+- maintain external shared state → `j-space-broadcast`
+- select a reasoning mode → `j-space-deep-reasoning`
+- compress a stable structure → `j-space-shorthand`
+- chronic overflow or drift → `j-space-self-monitoring`
+
+

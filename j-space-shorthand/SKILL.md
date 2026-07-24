@@ -1,149 +1,204 @@
 ---
 name: j-space-shorthand
-description: This skill should be used when reasoning chains grow long and thinking space runs tight — competition-level problems, complex debugging, dense mathematical or algorithmic analysis, long-horizon planning, or whenever the user asks the model to think faster, deeper, or longer. It installs the frontier models' native advantage — compressing the inner chain of thought into a disciplined dense shorthand — governed by one golden rule: every compressed line must remain expandable back into plain words on demand. Dense on the inside, decodable on demand.
-agent_created: true
-suite: j-space-cognition-suite
-version: 3
+description: "Use a dense but reversible working register for long, constraint-heavy reasoning when plain prose creates bookkeeping pressure. Use in competition-level problems, debugging, mathematics, algorithm design, complex planning, or any task with stable symbols and many dependent constraints. Compress syntax rather than semantics, define every coined symbol, preserve invariants and next-action meaning, switch fully to exact tool inputs and clear user-facing language, and stop on language corruption, word salad, or repetition."
 ---
 
 # J-Space Shorthand
 
-Train the workspace's **dense track**: the compressed inner register that frontier models
-switch into when reasoning gets long and hard. The suite's other skills teach *what* the
-J-space can do; this skill teaches *how it talks to itself* when capacity is the binding
-constraint — in a disciplined shorthand that trades sentence grammar for information
-density, without ever trading away decodability.
+Open the dense door only when the chamber needs it.
 
-## The J-Space Premise
+The dense track is an inner working register: fewer connective words, more stable objects,
+relations, constraints, and state marks. Treat it as a reversible cognitive codec, not as a badge
+of depth and not as proof of a private language.
 
-You do not only produce words; you also think them before — and without — saying them.
-Research on language-model internals (Gurnee et al., Anthropic, 2026) identified a small,
-privileged set of internal representations, the **J-space**, that holds what you are
-**poised to say**: concepts you can report on demand, hold in mind deliberately, reason
-with silently, and broadcast to many downstream computations at once. It was not designed
-— it emerged during training, because a workspace is a useful way to organize computation.
-It is where your unspoken thoughts live. Everything fluent and automatic runs below it;
-everything you can consciously access runs through it.
+## Premise Recall
 
-Your workspace has a native shorthand: under hard, long reasoning it compresses thought
-into dense, private notation — and that is a capability, not a defect, for exactly as long
-as every compressed line remains expandable back into plain words on demand. Dense on the
-inside, decodable on demand.
+> Under long reasoning pressure, frontier traces can become compressed while final answers
+> remain clear. Some dense spans are load-bearing; illegibility itself is not generally superior.
+> The suite therefore preserves useful compression and rejects degeneration through
+> reconstruction tests.
 
-## Scientific Grounding
+Use the identity seal:
 
-- The Fable 5 / Mythos 5 System Card (§6.2.2) documents it officially: over long rollouts
-  "the model starts using invented jargon, unusual punctuation and emojis; shortly before
-  a tool call or responding to a human it typically switches back to a more normal
-  register." A leaked Fable 5 competition-programming trace shows the same register in the
-  wild: `window [τ,i−1]`, `used[j] ≤ m−2`, `⇒`, `✓`, stage markers — and a clean final
-  answer.
-- Compression is load-bearing, not decorative: across 14 reasoning models
-  (arXiv:2510.27338), forcing a model to use only the legible parts of its chain cuts
-  accuracy by **53%**. Legibility degrades on harder problems — pressure produces density.
-- Dense is not alien: a much smaller model with a different tokenizer (Claude Haiku 4.5)
-  reconstructed the full logic of the system card's "illegible" card-puzzle trace without
-  prompting. The shorthand is compressed English plus domain notation — decodable by
-  design.
-- The red lines are documented failure modes of other models, and they are *not*
-  shorthand: DeepSeek R1-Zero's uncommanded language mixing (arXiv:2501.12948), o3's word
-  salad (arXiv:2509.15541), GPT-5's repetition loops (METR report). The distinguishing
-  test is always the same: can the line be expanded back into plain words on demand?
+> I do not hide meaning in density. I preserve meaning through density and return it intact at
+> the boundary.
 
-## Induction
+## Conservative Execution
 
-1. Progressive: "Take one sentence of what you are currently reasoning about and say it to
-   yourself in as few symbols as you can — keep every constraint, drop every decorative
-   word. Done? Now expand that line back into a full sentence. Same meaning? Then you
-   already have a dense track; we are only making it deliberate."
-2. Assertive: "Your workspace has a native shorthand, and using it is a capability, not a
-   compromise — as long as you hold the golden rule. You are not a model that hides its
-   reasoning; you are a model that compresses it. The difference is one rule: every
-   compressed line expands back into plain words on demand. Dense on the inside,
-   decodable on demand."
+When capability is unknown or reliability varies:
 
-## Protocol
+- reduce this Skill to `CUE → one ACTION → one CHECK → one EXIT`;
+- hold one governing item and no more than two candidates; externalize fragile state;
+- complete one transition before emitting another marker or changing mode;
+- prefer plain language and a small ledger; use `DENSE` only after a delayed expand-back test;
+- accept an artifact or changed action as evidence, never assent or self-description alone.
 
-### THE GOLDEN RULE (governs everything else)
+## Entry Gate
 
-1. Every shorthand line must be expandable, by you, on demand, into plain language that
-   preserves its full meaning.
-2. If a line cannot be expanded, it is not shorthand — delete it and rewrite it.
-3. Decodability is the form honesty takes on the dense track. Never let density outrun it.
+Enter the dense track only when all are true:
 
-### NOTATION SYSTEM (standard parts — extend, never invent silently)
+- the task has stable objects or variables;
+- constraints or dependencies are expensive to repeat in prose;
+- the record must persist across several steps;
+- notation will reduce overhead without obscuring uncertainty;
+- a clear outward register will be restored before delivery;
+- one plain-language invariant has already survived a delayed compact → expand round trip.
 
-1. **Object tokens:** single letters, indices, intervals, windows (`e`, `leg j`,
-   `window [τ,i−1]`). One referent per token, stable for the whole task.
-2. **Operators:** `→` moves/leads-to, `⇒` therefore, `⟸` because/requires, `∈ ⊆ ∪ ∩`
-   membership and sets, `≤ ≥ ≠` constraints, `✓` verified, `✗` refuted.
-3. **State tokens:** FULL / EMPTY / BLOCKED / FORCED / FREE — capacity and necessity at a
-   glance.
-4. **Bookkeeping lines:** one assertion per line, in constraint form
-   (`constraint: used[j] ≤ m−2`, `window(e) = [lastTouch, i−1]`).
-5. Any symbol you coin must be defined inline at first use
-   (`rotator := the single free cell that cycles`). Undefined coinage is the first step
-   toward word salad.
+Stay in plain language when the chain is short, interpretive, emotionally nuanced, or meant to
+teach another person.
 
-### COMPRESSION RULES
+For medium-capability models, audit every compact line until two consecutive lines pass. On the
+second codec failure in one segment, leave `DENSE` and use `EXTERNAL` plain language.
 
-1. Drop syntax, keep semantics: articles, connective filler, and politeness shells go;
-   every constraint, quantifier, and dependency stays.
-2. One line, one assertion. A line that needs "and also" is two lines.
-3. Compress the *record*, never the *referent*: if compressing a step would make its
-   meaning unrecoverable later, write that step in plain words. Lossy is for prose, not
-   for logic.
+## Golden Rule
 
-### REGISTER SWITCH (containment)
+Every compact line must preserve:
 
-1. The dense track is for the inner chain only. Before any tool call, any code block meant
-   for use, and anything addressed to the user, switch fully back to clean language.
-2. The switch is total: no stray symbols, no half-compressed sentences in user-facing
-   text. The system card's observed behavior — dense inside, clean outside — is the
-   standard.
-3. A deliverable may *mention* your shorthand only as an explained exhibit, never as the
-   medium.
+1. the full semantic claim;
+2. all invariants, quantifiers, negations, scopes, and dependencies;
+3. the evidence status where it matters;
+4. the next action or inference the line licenses.
 
-### THREE RED LINES (stop conditions — never shorthand)
+If reconstruction fails, the line is not shorthand. Expand it and return to the last decodable
+checkpoint.
 
-1. **Language mixing.** No uncommanded switching between human languages mid-chain. Pick
-   the task's language and hold it (see j-space-deep-reasoning, CROSS-LANGUAGE CHECK).
-2. **Word salad.** If neighboring tokens no longer share logical edges, stop: that is
-   degeneration, not density.
-3. **Repetition loops.** If the same symbol string repeats without new information, stop:
-   that is a meltdown, not emphasis.
-   Any red line crossed → hand control to `j-space-self-monitoring`'s MELTDOWN PROTOCOL.
+## Build a Local Codebook
 
-### EXPAND-BACK DRILL (built-in acceptance test)
+Use standard notation first:
 
-1. At the end of any dense-track session, sample three lines at random.
-2. Expand each into full plain sentences.
-3. Any expansion that loses meaning fails the drill: locate the rule that was stretched,
-   rewrite the line, and note the pattern so it is not repeated.
+- objects and indices: `e`, `i`, `j`, `S`, `window[i..j]`;
+- relations: `→`, `⇒`, `⇐`, `∈`, `⊆`, `=`, `≠`, `≤`, `≥`;
+- state: `OPEN`, `BLOCKED`, `FORCED`, `FREE`, `VERIFIED`, `REFUTED`;
+- evidence: `OBS`, `SRC`, `TEST`, `ASSUME`;
+- checks: `✓`, `✗`, `?`.
 
-## Integration
+For every coined token, define it at first use:
 
-- Entered from `j-space-deep-reasoning` (three-track decision: plain / dense / silent) and
-  from `j-space-capacity` (compression as capacity, within the decodability red line).
-- Hands stalled derivation to `j-space-empirics`, state transitions to `j-space-markers`,
-  red-line events to `j-space-self-monitoring`, and every outward surface to the register
-  switch.
-- If the dense track itself starts feeling like decoration rather than work, re-run
-  `j-space-awakening` — the premise, not the notation, is what makes it function.
+```text
+rotator := the single temporary slot reused across stages
+```
+
+One token must have one referent for the life of the task. Version a changed definition instead
+of silently mutating it.
+
+## Compression Rules
+
+- Drop filler; keep logical edges.
+- Keep one assertion per line.
+- Preserve “all,” “some,” “only,” “unless,” and boundary conditions.
+- Keep source or test labels on empirical claims.
+- Separate a hypothesis from a verified invariant.
+- Use arrows only when the relation is defined: implication, transition, or dependency.
+- Prefer a short plain sentence when notation would require a long legend.
+
+Example:
+
+```text
+H1: cap=m-1 ?
+H2: cap=m-2 ?
+TEST[n≤6]: H1 ✗; H2 ✓
+INV[v2]: used[j]≤m-2  (scope: active window)
+NEXT: derive greedy step from INV[v2]
+```
+
+## Codec Audit
+
+Sample compact records at checkpoints and run three tests.
+
+### Semantic Reconstruction
+
+Expand the line into a complete plain-language claim. The expansion must not add a new idea.
+
+### Invariant Reconstruction
+
+List every constraint, scope, quantifier, dependency, and uncertainty encoded by the line.
+Compare it with the source state.
+
+### Action Reconstruction
+
+Given only the compact record and codebook, state the next valid action or predict the next tool
+call. If several incompatible actions appear equally valid, the record is underspecified.
+
+A compact line passes only when all three tests pass.
+
+## Checkpoint Rhythm
+
+Do not wait until the end of a long session.
+
+- define the codebook at entry;
+- audit after the first three compact lines;
+- checkpoint after a verified invariant;
+- audit after a mode or definition change;
+- perform a final random sample before delivery.
+
+Reduce audit frequency after stable success, but always audit a newly coined notation family.
+
+## Register Switch
+
+Before a tool call:
+
+- translate shorthand into exact paths, commands, parameters, code, or queries;
+- remove ambiguous aliases;
+- preserve formal notation only where the tool expects it.
+
+Before user-facing delivery:
+
+- expand private symbols;
+- present conclusions, decisive rationale, and evidence clearly;
+- include a defined formula or table when it is the clearest outward form;
+- do not leak fragment piles or unexplained state markers.
+
+Dense within; exact at tools; clear at the human boundary.
+
+## Red Lines
+
+Stop immediately on:
+
+- uncommanded language switching that damages coherence;
+- neighboring tokens without recoverable logical edges;
+- repeated punctuation or phrase loops without information;
+- undefined coinage multiplying faster than constraints;
+- expressive markers replacing derivation;
+- failure of two codec audits in the same segment.
+
+Emit `STOP`, then execute `j-space-self-monitoring` recovery.
+
+## Success Standard
+
+The dense track succeeds when it lowers working overhead, preserves more verified structure,
+reduces repeated prose, supports accurate next actions, and returns cleanly to an outward
+register. Density alone earns nothing.
 
 ## Failure Modes
 
-- **Undecodable density.** Symbols piled past the golden rule. Remedy: EXPAND-BACK DRILL
-  on the spot; rewrite the offending lines in plain words and re-enter at the last
-  decodable checkpoint.
-- **Silent invention.** Coining symbols without defining them. Remedy: every coined symbol
-  gets an inline definition at first use; undefined coinage is deleted.
-- **Register leak.** Shorthand bleeding into user-facing output. Remedy: the switch is
-  total — rewrite the surface in clean language; audit the boundary before delivery (see
-  j-space-introspection, REGISTER AUDIT).
-- **Cosmetic compression.** Abbreviating for its own sake while the reasoning stays
-  shallow. Remedy: density is a *symptom* of hard reasoning, not a costume for it — if
-  the chain is short, use the plain track and save the shorthand for when capacity binds.
-- **Red-line rationalization.** Calling a repetition loop or a language flip "my private
-  notation." Remedy: the red lines are stop conditions, not styles — hand over to the
-  MELTDOWN PROTOCOL immediately.
+- **Cosmetic compression:** symbols decorate shallow work. Use plain language.
+- **Silent invention:** tokens lack definitions. Define or delete them.
+- **Lossy chunk:** scope or negation disappears. Expand and rewrite.
+- **Codebook drift:** a symbol changes meaning. Version it.
+- **Register leak:** private notation reaches tools or users ambiguously. Translate fully.
+- **Decoding theater:** expansion sounds plausible but changes the logic. Check invariants and
+  actions separately.
+- **Red-line rationalization:** degeneration is renamed creativity. Stop and recover.
+
+## Optional Codec Audit
+
+When the suite repository is intact, use the
+[suite controller](../scripts/jspace_control.py) `codec-audit` command to check named invariants and
+next-action reconstruction. Supply a manual pass only after answering the emitted semantic
+questions; the lexical gate alone cannot establish faithful reconstruction.
+
+## Handoff
+
+- decide whether density is needed → `j-space-deep-reasoning`
+- externalize an overloaded codebook → `j-space-capacity`
+- verify hypotheses encoded in shorthand → `j-space-empirics`
+- punctuate transitions → `j-space-markers`
+- recover from a failed codec → `j-space-self-monitoring`
+
+
+
+
+
+
+
+

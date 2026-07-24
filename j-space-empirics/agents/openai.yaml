@@ -1,0 +1,4 @@
+interface:
+  display_name: "J-Space Empirics"
+  short_description: "Escape stalled theory through decisive verification"
+  default_prompt: "Use $j-space-empirics to turn this stalled derivation into finite hypotheses and differential tests."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "J-Space Capacity"
+  short_description: "Protect the workspace bottleneck from overload"
+  default_prompt: "Use $j-space-capacity to admit, chunk, evict, and externalize the right working contents."

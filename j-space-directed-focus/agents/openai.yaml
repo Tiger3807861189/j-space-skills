@@ -1,0 +1,4 @@
+interface:
+  display_name: "J-Space Directed Focus"
+  short_description: "Hold one governing aim while other work continues"
+  default_prompt: "Use $j-space-directed-focus to keep the governing goal active throughout this task."

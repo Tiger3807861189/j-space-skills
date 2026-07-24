@@ -1,0 +1,4 @@
+interface:
+  display_name: "J-Space Shorthand"
+  short_description: "Use dense but reversible internal reasoning notation"
+  default_prompt: "Use $j-space-shorthand to compress this long reasoning chain without losing invariants or decodability."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "J-Space Markers"
+  short_description: "Bind vivid state markers to mandatory reasoning shifts"
+  default_prompt: "Use $j-space-markers to turn obstruction, evidence, checkpoints, rollback, and reset into actions."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "J-Space Broadcast"
+  short_description: "Maintain one authoritative core across many outputs"
+  default_prompt: "Use $j-space-broadcast to keep shared facts and constraints consistent across the deliverable."

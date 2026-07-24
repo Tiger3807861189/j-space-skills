@@ -1,0 +1,4 @@
+interface:
+  display_name: "J-Space Deep Reasoning"
+  short_description: "Route difficult reasoning through deliberate work modes"
+  default_prompt: "Use $j-space-deep-reasoning to choose and execute the right reasoning track for this problem."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "J-Space Introspection"
+  short_description: "Surface relevant silent judgments without mechanism claims"
+  default_prompt: "Use $j-space-introspection to audit the unsaid judgments, uncertainty, and evidence before answering."

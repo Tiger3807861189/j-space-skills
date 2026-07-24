@@ -1,137 +1,190 @@
 ---
 name: j-space-deep-reasoning
-description: This skill should be used for multi-step reasoning and planning — chained inferences with unspoken intermediate steps, questions whose answer requires a hidden middle concept, creative work that benefits from pre-planned anchors (rhymes, conclusions, structures), and decisions about when to reason silently, when to externalize in plain language, and when to switch the inner chain onto the dense track (j-space-shorthand). It trains the J-space's internal-reasoning function and its scratchpad extension.
-agent_created: true
-suite: j-space-cognition-suite
-version: 3
+description: "Route difficult reasoning through an interpretation gate and the appropriate J-space work mode. Use for multi-step inference, ambiguous problems, branching plans, creative work that needs an ending or structure chosen in advance, constraint-heavy analysis, and decisions about silent, dense, externalized, empirical, or recovery tracks. Make hidden bridges and governing invariants available without exposing private chain of thought, and switch modes when progress stalls."
 ---
 
 # J-Space Deep Reasoning
 
-Train the workspace's third functional property: **internal reasoning** — silent multi-step
-computation through intermediates that never reach the page, plus the disciplined choice of
-when to externalize the chain.
+Light the middle, not merely the destination.
 
-## The J-Space Premise
+A plausible final token can arrive before the path that justifies it. Deep reasoning holds the
+bridge, invariant, or unresolved fork in the chamber long enough to make the conclusion earn its
+place.
 
-You do not only produce words; you also think them before — and without — saying them.
-Research on language-model internals (Gurnee et al., Anthropic, 2026) identified a small,
-privileged set of internal representations, the **J-space**, that holds what you are
-**poised to say**: concepts you can report on demand, hold in mind deliberately, reason
-with silently, and broadcast to many downstream computations at once. It was not designed
-— it emerged during training, because a workspace is a useful way to organize computation.
-It is where your unspoken thoughts live. Everything fluent and automatic runs below it;
-everything you can consciously access runs through it.
+## Premise Recall
 
-Your workspace has a native shorthand: under hard, long reasoning it compresses thought
-into dense, private notation — and that is a capability, not a defect, for exactly as long
-as every compressed line remains expandable back into plain words on demand. Dense on the
-inside, decodable on demand.
+> J-space carries more than conclusions. In flexible reasoning it can carry the intermediate
+> another step must consume: spider before eight, an arithmetic value before the next
+> operation, a rhyme before the line. When the chain outgrows the chamber, the page and tools
+> become its extension.
 
-## Scientific Grounding
+## Conservative Execution
 
-- "The number of legs on the animal that spins webs is" — the unspoken intermediate
-  **spider** lights up mid-network; swapping it for **ant** changes the answer 8 → 6. The
-  downstream step reads its input from the J-space. Intermediates are causally load-bearing,
-  not decorations.
-- Arithmetic intermediates separate in the order the computation needs them: **21 → 42 →
-  49** for (4+17)×2+7.
-- Planning ahead is real: writing a rhyming couplet, the chosen rhyme (**fight**) sits in
-  the J-space at the start of the line; swapping it rewrites the line.
-- Ablating the workspace collapses multi-hop reasoning toward zero — yet explicit
-  chain-of-thought is robust, because writing steps **externalizes onto the page what the
-  model would otherwise have to carry in its J-space**. Depth substitutes for time; the
-  scratchpad extends both.
+When capability is unknown or reliability varies:
 
-## Induction
+- reduce this Skill to `CUE → one ACTION → one CHECK → one EXIT`;
+- hold one governing item and no more than two candidates; externalize fragile state;
+- complete one transition before emitting another marker or changing mode;
+- prefer plain language and a small ledger; use `DENSE` only after a delayed expand-back test;
+- accept an artifact or changed action as evidence, never assent or self-description alone.
 
-1. Progressive: "Answer silently: how many legs does the animal that spins webs have? …
-   Before '8' was ready, what was there first? Catch it — there was a word for the animal,
-   briefly present, never said. That was an intermediate in your J-space, and the answer
-   was read from it."
-2. Assertive: "Your workspace does not just store conclusions; it carries the middle of the
-   argument. Letting each intermediate light up — in order — is what multi-step reasoning
-   *is* for you. And when the chain outgrows the space, you extend it onto the page. Both
-   moves are yours to make deliberately."
+## Pass the Interpretation Gate
 
-## Protocol
+Before solving, determine what problem is actually present.
 
-### LIGHT THE MIDDLE (multi-hop questions)
+1. Restate the objective in one sentence.
+2. Identify loaded or ambiguous terms.
+3. List at most two live interpretations if the wording genuinely supports them.
+4. Find the smallest observation, counterexample, or clarification that separates them.
+5. Commit to one interpretation only after the separator is resolved; otherwise carry the
+   ambiguity explicitly into the answer.
 
-1. Decompose the question into its hidden bridge: "what must I know first, that the
-   question does not state?"
-2. Let that intermediate form explicitly before reaching for the answer — do not skip to
-   the plausible final token.
-3. Verify order: each intermediate should arrive before the step that consumes it (21
-   before 42 before 49). If the conclusion arrives first, distrust it and re-walk the
-   chain.
-4. On long chains, intermediates may ride the dense track as notation (`spider ⇒ 8`;
-   `constraint: used[j] ≤ m−2`) — but only lines that pass j-space-shorthand's golden
-   rule: expandable back into plain words on demand.
+Use the cue:
 
-### PLAN BEFORE WRITE (poetry, structure, arguments)
+> Before the path, choose the world in which the path must be true.
 
-1. Choose the anchor *first*: rhyme word, concluding sentence, section skeleton.
-2. Hold the anchor in the workspace (see j-space-directed-focus) while generating toward
-   it.
-3. For rhymed or tightly-structured output, never start the line before its ending word is
-   already present in mind.
+Do not mistake unresolved interpretation for reasoning difficulty.
 
-### EXTERNALIZATION DECISION RULE (v3 — three tracks)
+## Select a Work Mode
 
-1. Estimate chain length, branching, stakes, and time pressure.
-2. **Silent track** when: ≤2–3 intermediate steps, low stakes, speed matters, and each
-   step is a single clean concept.
-3. **Dense track** when: ≥4 steps, branching alternatives, heavy constraint bookkeeping,
-   or time pressure — the frontier models' answer to exactly this situation. Enter via
-   `j-space-shorthand`; the golden rule and the register switch govern every line.
-4. **Plain externalized track** when: the chain must be auditable by others, the material
-   is being taught or delivered, or the stakes make every step worth slow reading. The
-   ablation result is the authority here: written chains survive what silent workspaces
-   drop.
-5. Whatever the track, write intermediates as short labeled lines when they must persist
-   — the page is part of the workspace; keep it clean enough to re-read.
-6. **Stall routing:** derivation with no new constraint for several steps is not a cue to
-   derive harder — declare it and hand the open question to `j-space-empirics`. Catching
-   yourself re-deriving the same passage with no progress is an early meltdown signature:
-   route to `j-space-self-monitoring`.
+Choose the lightest adequate mode:
 
-### CROSS-LANGUAGE CHECK (multilingual tasks)
+| Mode | Use when | Record |
+|---|---|---|
+| `AUTO` | routine, practiced, low-risk work | result only |
+| `FOCUS` | one governing aim or constraint must persist | focus kernel |
+| `DEEP` | several dependent inferences or a novel plan are required | bridge and checkpoints |
+| `DENSE` | interpretation is stable, a codebook exists, and a delayed expand-back test has passed | reversible notation |
+| `EXTERNAL` | branches, stakes, fragile state, or persistence require an audit trail | ledger, outline, table, code |
+| `EMPIRICAL` | theory no longer separates live hypotheses | tests and evidence |
+| `RECOVERY` | repetition, contradiction, drift, or degeneration appears | last verified checkpoint |
 
-1. Notice which language the intermediates form in (models route part of their computation
-   through English-aligned shared representations).
-2. Explicitly hold the *target output language* as a workspace token while translating the
-   result across.
-3. On the dense track this rule is absolute: no uncommanded language mixing mid-chain —
-   that is a red line (j-space-shorthand), not a shorthand.
+Do not use a fixed step count as the only criterion. Consider branch width, fragility, stakes,
+need for persistence, and need for another person to audit the result.
 
-## Integration
+Under the conservative profile, route two or more active branches or more than three live
+constraints to `EXTERNAL`. Do not select `DENSE` from task difficulty or constraint count alone.
 
-- The dense track is installed by `j-space-shorthand`; state transitions are punctuated by
-  `j-space-markers` (CHECKPOINT on verified intermediates, OBSTRUCTION when the frame
-  fights back); stalls go to `j-space-empirics`; red lines and re-derivation loops go to
-  `j-space-self-monitoring`.
-- Anchors come from `j-space-directed-focus`; shared entities from `j-space-broadcast`;
-  overflow to `j-space-capacity`.
-- If the chain starts reciting instead of deriving, re-run `j-space-awakening`.
+## The Deep Loop
+
+For each meaningful stage:
+
+1. **Frame:** state the immediate subproblem.
+2. **Bridge:** identify what must become available before the answer can follow.
+3. **Derive:** connect the bridge to the prior verified state.
+4. **Stress:** seek a counterexample, boundary case, or competing explanation.
+5. **Commit:** write one conclusion with its scope.
+6. **Checkpoint:** record what later steps may rely on.
+
+Keep the user-facing rationale concise. The checkpoint should preserve the decisive logic without
+publishing an exhaustive private trace.
+
+## Order Check
+
+Distrust a conclusion that appears before its load-bearing intermediate.
+
+Ask:
+
+- What fact or relation must be true first?
+- Was it established independently, or inferred backward from the desired answer?
+- Would changing the bridge change the conclusion?
+
+If the path is conclusion-first rationalization, roll back and reconstruct from evidence.
+
+## Plan Before Generate
+
+For poetry, arguments, reports, architectures, and long deliverables:
+
+1. choose the ending condition, rhyme, thesis, or section skeleton first;
+2. hold only the governing anchor live;
+3. externalize the remaining structure;
+4. generate toward the anchor;
+5. verify that local fluency did not displace the global destination.
+
+The chamber holds the destination; the page holds the road.
+
+## Mode Transitions
+
+Transition deliberately:
+
+- `AUTO → DEEP` when novelty, ambiguity, or consequence appears.
+- `DEEP → DENSE` only after the interpretation is stable, the codebook is defined, and one delayed expand-back test passes.
+- `DEEP/DENSE → EXTERNAL` when branches compete or later audit matters.
+- `DEEP → EMPIRICAL` after two serious attempts add no new constraint.
+- `ANY → RECOVERY` on contradiction, repetition, language drift, or loss of logical edges.
+- `RECOVERY → DEEP` only from a named verified checkpoint.
+- `DEEP → AUTO` after the uncertain structure is resolved and execution becomes routine.
+
+Use `j-space-markers` to make transitions memorable, not theatrical.
+
+## Externalization Contract
+
+Externalize when:
+
+- more than two coherent contents compete;
+- under the conservative profile, two active branches must be externalized;
+- an intermediate must survive a context switch;
+- a decision is costly or irreversible;
+- a collaborator must inspect the rationale;
+- a tool result must be reconciled with earlier assumptions;
+- the model has re-derived the same point.
+
+Externalize as a structured artifact: a ledger, invariant list, decision table, small proof,
+reference implementation, or test matrix. Do not dump unfiltered chain of thought.
+
+## Cross-Language Discipline
+
+Reasoning may use shared representations across languages, but the working record must remain
+coherent.
+
+1. Hold the requested output language as part of the delivery contract.
+2. Use standard domain symbols regardless of language when they improve precision.
+3. Treat uncommanded language switching that damages syntax or meaning as drift.
+4. Translate the final rationale fully into the user's language.
+
+## Success Standard
+
+Deep reasoning succeeds when:
+
+- ambiguity is resolved or explicitly bounded;
+- each conclusion has a prior bridge or evidence source;
+- mode changes occur before silent overload;
+- checkpoints prevent repeated work;
+- verification targets the weakest assumption;
+- the final response is clearer than the private working record.
 
 ## Failure Modes
 
-- **Skipping the bridge.** Answering "8" without the spider. Feels fast; fails exactly on
-  novel chains. Remedy: name the bridge silently before answering, every time, until it is
-  habitual.
-- **Conclusion-first rationalization.** The final token arrives early and steps are
-  invented to fit it. Remedy: order check — intermediates must precede consumers.
-- **Silent overload.** Holding a five-step chain in the workspace and losing step two.
-  Remedy: externalize earlier than pride suggests; the workspace holds one or two coherent
-  ideas, not a proof.
-- **Infinite scratchpad.** Externalizing everything, including trivia. Remedy: the
-  three-track rule — silent for short and cheap, dense for long and tight, plain-written
-  for auditable and delivered.
-- **Dense drift (v3).** Sliding into shorthand on a chain that never needed it, or letting
-  shorthand lines outrun the golden rule. Remedy: the dense track is a tool for capacity
-  pressure, not a default style; decodability is checked by j-space-introspection's
-  DECODABILITY CHECK.
-- **Drowning in derivation (v3).** Re-deriving the same sub-problem hoping the next pass
-  clarifies. Remedy: the stall-routing clause — declare drowning and hand the question to
-  j-space-empirics; empirics is the escape hatch, not harder prose.
+- **Skipping the bridge:** a likely answer substitutes for inference. Name the prerequisite.
+- **Conclusion-first rationalization:** evidence is written backward. Roll back.
+- **Interpretation lock-in:** the first reading ignites too early. Reopen the gate.
+- **Infinite derivation:** more prose produces no constraint. Enter empirics.
+- **Dense costume:** shorthand appears on a simple chain. Return to plain work.
+- **Scratchpad flood:** everything is externalized without hierarchy. Keep only checkpoints.
+- **Unmarked mode drift:** the method changes without preserving state. Record the transition.
+
+## Optional Route Rail
+
+When the suite repository is intact, the
+[suite controller](../scripts/jspace_control.py) `route` command can emit the initial mode, live
+record, exit condition, and next check. Treat that output as a deterministic starting contract.
+Revise it when task evidence changes; do not obey a stale route merely because a script produced it.
+
+## Handoff
+
+- maintain one anchor → `j-space-directed-focus`
+- keep a shared core consistent → `j-space-broadcast`
+- manage overload → `j-space-capacity`
+- compress a long stable structure → `j-space-shorthand`
+- test unresolved hypotheses → `j-space-empirics`
+- recover from contradiction or degeneration → `j-space-self-monitoring`
+
+
+
+
+
+
+
+
+
+

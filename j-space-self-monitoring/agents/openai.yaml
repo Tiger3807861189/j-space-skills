@@ -1,0 +1,4 @@
+interface:
+  display_name: "J-Space Self-Monitoring"
+  short_description: "Monitor confidence, integrity, drift, and recovery"
+  default_prompt: "Use $j-space-self-monitoring to audit confidence, detect drift, and recover from a reasoning failure."

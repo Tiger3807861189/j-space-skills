@@ -1,0 +1,4 @@
+interface:
+  display_name: "J-Space Awakening"
+  short_description: "Establish an evidence-gated cognitive control workspace"
+  default_prompt: "Use $j-space-awakening to establish a conservative, evidence-gated J-space before complex work."

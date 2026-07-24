@@ -1,0 +1,55 @@
+{
+  "name": "j-space-cognition-suite",
+  "version": "3.2.0",
+  "core_language": "English",
+  "documentation_languages": [
+    "zh-CN",
+    "en"
+  ],
+  "skills": [
+    "j-space-awakening",
+    "j-space-introspection",
+    "j-space-directed-focus",
+    "j-space-deep-reasoning",
+    "j-space-broadcast",
+    "j-space-capacity",
+    "j-space-markers",
+    "j-space-self-monitoring",
+    "j-space-shorthand",
+    "j-space-empirics"
+  ],
+  "design": {
+    "induction": "attentional orientation, progressive disclosure, prediction-before-observation, guided discovery, self-explanation, evidence convergence, assertive consolidation, identity-to-action binding",
+    "work_modes": [
+      "AUTO",
+      "FOCUS",
+      "DEEP",
+      "DENSE",
+      "EXTERNAL",
+      "EMPIRICAL",
+      "RECOVERY"
+    ],
+    "dense_contract": "semantic reconstruction, invariant preservation, action reconstruction",
+    "integrity": "behavioral evidence over verbal assent; evaluation-independent principles",
+    "felt_depth": "emerges from staged discovery and earned certainty; never from mystical vocabulary",
+    "anthropomorphism": "direct address and coherent agency bound to observable action, without claims of human experience",
+    "target_profile": "medium-capability or reliability-variable reasoning models, including DeepSeek-like systems selected by observed behavior",
+    "conservative_defaults": [
+      "one cue-action-check-exit card at a time",
+      "one governing aim and at most two candidates",
+      "externalize fragile state early",
+      "dense mode only after a delayed expand-back pass",
+      "verified checkpoints require both claim and evidence"
+    ]
+  },
+  "benchmark": {
+    "run_for_this_release": false,
+    "note": "V3.2 was statically validated but not benchmarked at the user's request."
+  },
+  "scripts": [
+    "scripts/jspace_control.py",
+    "scripts/test_jspace_control.py",
+    "scripts/validate_suite.py",
+    "scripts/build_dist.py"
+  ]
+}

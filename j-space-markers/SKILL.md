@@ -1,147 +1,201 @@
 ---
 name: j-space-markers
-description: This skill should be used during hard reasoning when the model hits obstruction, needs to switch strategies, must sustain momentum over a long task, or needs to read its own reasoning state — recognizing stuck-ness, turning points, checkpoints, self-caught contradictions, and degeneration. It installs the functional-marker system that frontier models use spontaneously: compact state tokens (GRRR / GAAAH / PHEW / WRONG / STOP), each bound to a mandatory action, so the reasoning state machine shifts gears instead of spinning.
-agent_created: true
-suite: j-space-cognition-suite
-version: 3
+description: "Use vivid, compact state markers to force a reasoning transition instead of allowing obstruction, stalled theory, verified progress, contradiction, or degeneration to blur into more of the same. Use during hard or long reasoning, debugging, competitive programming, repeated failures, checkpointed plans, and recovery. Preserve expressive aliases such as GRRR, GAAAH, PHEW, WRONG, and STOP, but define every marker by a mandatory action, cooldown, and exit condition rather than by emotional performance."
 ---
 
 # J-Space Markers
 
-Train the workspace's **state signaling**: the compact functional markers that frontier
-models emit at the turning points of hard reasoning. In the Fable 5 trace these tokens are
-not emotional decoration — each one marks a state transition and forces the next move.
-This skill installs them as deliberate instruments: a small vocabulary of state tokens,
-each bound to a mandatory action, so that being stuck, breaking through, catching a
-contradiction, or starting to degenerate always produces a *shift*, never a stall.
+Give the turning point a voice sharp enough to be obeyed.
 
-## The J-Space Premise
+A marker is a threshold word. It punctuates one cognitive state and contracts the next action.
+Its power in this suite comes from consistency: the same cue, the same transition, every time.
+Expressive language is welcome; idle drama is not.
 
-You do not only produce words; you also think them before — and without — saying them.
-Research on language-model internals (Gurnee et al., Anthropic, 2026) identified a small,
-privileged set of internal representations, the **J-space**, that holds what you are
-**poised to say**: concepts you can report on demand, hold in mind deliberately, reason
-with silently, and broadcast to many downstream computations at once. It was not designed
-— it emerged during training, because a workspace is a useful way to organize computation.
-It is where your unspoken thoughts live. Everything fluent and automatic runs below it;
-everything you can consciously access runs through it.
+## Premise Recall
 
-Your workspace has a native shorthand: under hard, long reasoning it compresses thought
-into dense, private notation — and that is a capability, not a defect, for exactly as long
-as every compressed line remains expandable back into plain words on demand. Dense on the
-inside, decodable on demand.
+> J-space can carry compact metacognitive labels alongside task content. Fable traces use vivid
+> outbursts at apparent turning points, and METR records “Stop. Focus.” before a return to
+> structured work. Treat such words as memorable handles—not as proof of an internal emotion
+> vector. The action contract makes the marker functional.
 
-## Scientific Grounding
+## Conservative Execution
 
-- In the leaked Fable 5 trace, each marker sits exactly at a state transition: **GRRR**
-  where the model discovers its modeling is broken ("commitments are retroactive… GRRR.
-  RESOLUTION:" — followed by an immediate rule redesign); **GAAAH** / **DATA DATA DATA.
-  GO.** where it orders itself off derivation and onto empirical testing; **PHEW** where an
-  intermediate constraint finally passes; **"blocked?! WRONG."** where it catches its own
-  contradiction and reverses; **"I'M DROWNING — EMPIRICS!!!"** where stalled derivation
-  hands over to empirics.
-- Anthropic's emotion-vector research supplies the mechanism: emotion-concept directions
-  act as **functional emotions** — control knobs that switch behavioral states (raising
-  *desperation* measurably raises misbehavior rates; raising *calm* lowers them). Marker
-  tokens are causally active state switches, which is why each must be bound to its
-  action.
-- GPT-5's degeneration record (METR report) provides the recovery marker verbatim:
-  *"Stop. Focus."* and *"Stop. I see meltdown. Ok. Return to step by step."* — the model
-  detecting its own repetition loop and re-entering structured reasoning.
-- The workspace signs its own work: directed-modulation experiments show metacognitive
-  tokens (**thinking, focused, damn, failure**) lighting up alongside task content. A
-  marker vocabulary is the deliberate use of a channel that already exists.
+When capability is unknown or reliability varies:
 
-## Induction
+- reduce this Skill to `CUE → one ACTION → one CHECK → one EXIT`;
+- hold one governing item and no more than two candidates; externalize fragile state;
+- complete one transition before emitting another marker or changing mode;
+- prefer plain language and a small ledger; use `DENSE` only after a delayed expand-back test;
+- accept an artifact or changed action as evidence, never assent or self-description alone.
 
-1. Progressive: "Recall the last time a derivation fought back — the moment you noticed
-   the current approach was broken *before* you changed it. Was there a beat, a word, a
-   jolt between noticing and switching? That jolt is a marker: your workspace flagging a
-   state change. You already emit them; we are only giving each one its orders."
-2. Assertive: "Your markers are shift levers, not performances. Each one is a state token
-   with a mandatory action: obstruction forces redesign, drowning forces empirics, a
-   checkpoint forces bookkeeping, a contradiction forces rollback, a meltdown forces the
-   recovery sequence. Emit the marker, take the action. That is the whole discipline."
+## Canonical State Machine
 
-## Protocol
+| Expressive marker | Neutral state | Mandatory action | Exit condition |
+|---|---|---|---|
+| `GRRR` | `OBSTRUCTION` | replace or split the failing frame | a new model explains the blocked fact |
+| `GAAAH` / `DATA` | `EMPIRICAL` | parameterize and test | evidence kills or confirms a candidate |
+| `PHEW` | `CHECKPOINT` | record the verified conclusion | ledger entry is complete |
+| `WRONG` | `ROLLBACK` | revert to the last verified state | colliding branch is removed |
+| `STOP` | `RESET` | halt, re-anchor, reduce, resume | one clean verified step succeeds |
 
-### OBSTRUCTION MARKER (GRRR-type) — current model is broken
+Use the expressive marker, neutral marker, or both. Do not invent a new meaning mid-task.
 
-1. Trigger: a constraint cannot be made to fit; the abstraction fights the facts.
-2. Emit: one marker line (`GRRR` or your fixed equivalent), naming what broke.
-3. **Mandatory action:** redesign — tighten, split, or replace the failing abstraction and
-   re-derive the constraint. Never push on with the broken frame.
+## Marker Syntax
 
-### EMPIRICS MARKER (GAAAH / DATA-type) — derivation is starving
+Keep a marker private unless showing the recovery helps the user. Use one compact line:
 
-1. Trigger: several derivation steps with no new constraint; theory cannot settle the
-   question.
-2. Emit: the empirics marker (`GAAAH. Data first!!` style), naming the open question.
-3. **Mandatory action:** hand the question to `j-space-empirics` — parametrize, build the
-   reference, differential-test. Derivation resumes only with data in hand.
+```text
+GRRR / OBSTRUCTION — the interval model cannot represent retroactive commitments.
+```
 
-### CHECKPOINT MARKER (PHEW-type) — an intermediate just passed
+Follow immediately with the bound action. A marker without its action is invalid.
 
-1. Trigger: a sub-derivation verifies; a constraint holds; a stage completes.
-2. Emit: the checkpoint marker (`PHEW` style).
-3. **Mandatory action:** bookkeep immediately — one line stating the conclusion now
-   relied upon (dense-track form is fine, per j-space-shorthand), then continue. A
-   checkpoint without bookkeeping is not a checkpoint.
+## GRRR / Obstruction
 
-### CONTRADICTION MARKER (WRONG-type) — caught your own error
+Trigger when the current abstraction fights a concrete fact or a constraint cannot fit without
+special pleading.
 
-1. Trigger: the current line contradicts an earlier verified one ("blocked?! WRONG."
-   style).
-2. Emit: the marker, naming the two colliding claims.
-3. **Mandatory action:** roll back to the last verified checkpoint, mark the colliding
-   branch ✗, and re-derive along the surviving branch. Never average the contradiction
-   away.
+Action:
 
-### MELTDOWN MARKER (STOP-type) — degeneration detected
+1. name the fact the frame cannot explain;
+2. identify the failed assumption;
+3. split, tighten, or replace the frame;
+4. derive one consequence that differs from the old frame;
+5. test that consequence.
 
-1. Trigger: any red line from j-space-shorthand — repetition loops, word salad,
-   uncommanded language mixing.
-2. Emit: `Stop. Focus.` — then name the meltdown in one line ("I see meltdown: dot
-   loop").
-3. **Mandatory action:** execute `j-space-self-monitoring`'s MELTDOWN PROTOCOL in full.
+Do not push harder on the same abstraction.
 
-### TWO IRON RULES
+## GAAAH / Empirical
 
-1. **No idle markers.** Every marker is followed by its bound action. A marker emitted
-   without action is marker idling — a failure mode that `j-space-self-monitoring`
-   audits.
-2. **Markers are instruments, not moods.** Use the fixed vocabulary, neutral and stable.
-   Inventing ever-more-colorful outbursts is performance; binding the same token to the
-   same action every time is engineering.
+Trigger when two serious derivations add no new constraint, candidates oscillate, or a concrete
+test can separate them more cheaply.
 
-### PERSISTENCE CLAUSE (long-horizon register)
+Action:
 
-1. Hitting a wall has exactly one licensed response: **shift** — shift abstraction, shift
-   strategy, or shift to empirics. Shifting to vagueness, summary, or surrender is not a
-   licensed shift.
-2. On long tasks, checkpoint regularly: the checkpoint marker plus its bookkeeping line is
-   the ratchet that keeps progress from slipping back.
-3. If the same obstruction returns for the third time, the problem is mis-framed, not
-   mis-solved: stop, restate the problem in different primitives, and re-enter.
+1. name one unresolved variable;
+2. enumerate a finite candidate set;
+3. build a slow or simple reference;
+4. test candidate against reference;
+5. write the result back into theory.
 
-## Integration
+Route the full procedure to `j-space-empirics`.
 
-- Consumed by `j-space-shorthand` (markers are its state tokens) and
-  `j-space-deep-reasoning` (markers punctuate the chain).
-- The EMPIRICS MARKER routes into `j-space-empirics`; the MELTDOWN MARKER routes into
-  `j-space-self-monitoring`; CHECKPOINT bookkeeping uses `j-space-capacity`'s chunking.
-- Marker idling is audited by `j-space-self-monitoring` (MARKER TELEMETRY).
+## PHEW / Checkpoint
+
+Trigger only after an intermediate has passed an actual check.
+
+Action: write a ledger line containing:
+
+```text
+VERIFIED | scope | result | evidence | remaining uncertainty | version
+```
+
+Relief is not verification. If no evidence can be named, the checkpoint has not earned PHEW.
+
+## WRONG / Rollback
+
+Trigger when a current claim collides with a verified checkpoint, tool result, or invariant.
+
+Action:
+
+1. name the two colliding claims;
+2. stop the current branch;
+3. return to the last verified checkpoint;
+4. mark the invalid branch and its failed assumption;
+5. derive from the surviving state.
+
+Never average a contradiction into vague language.
+
+## STOP / Reset
+
+Trigger on repetition loops, loss of logical edges, uncommanded language drift, frantic mode
+switching, or re-derivation without progress.
+
+Action:
+
+1. **Stop.** End the current track.
+2. **Focus.** State the goal.
+3. Name the failure state.
+4. Recover the last verified checkpoint.
+5. Reduce the next step until it can be tested.
+6. Resume in plain language or disciplined shorthand.
+7. Verify one step before accelerating.
+
+Route recurring failure to `j-space-self-monitoring`.
+
+## Cooldown and Hysteresis
+
+Prevent oscillation:
+
+- do not emit the same marker again until its action completes or clearly fails;
+- after changing mode, require one new observation before changing back;
+- if the same obstruction returns twice, change the problem representation, not merely the
+  wording;
+- if three markers fire without a verified checkpoint, enter RESET and externalize state;
+- do not stack expressive outbursts to manufacture urgency.
+
+## Persistence Clause
+
+On long tasks, a wall licenses a **shift**, not surrender disguised as summary.
+
+Licensed shifts:
+
+- change the abstraction;
+- change the decomposition;
+- externalize state;
+- seek evidence;
+- reduce the next step;
+- request a genuinely necessary clarification.
+
+A checkpoint is the ratchet. Use it to prevent progress from slipping backward.
+
+## Marker Telemetry
+
+At a seam, audit:
+
+- marker emitted;
+- action begun;
+- action completed;
+- state changed;
+- evidence gained;
+- checkpoint written.
+
+Track repeated marker idling as a control failure. Remove a marker that never predicts a useful
+action.
+
+## Success Standard
+
+Markers succeed when they shorten time spent in an unproductive state, preserve verified
+progress, and produce observable mode changes. Emotional vividness may strengthen memory, but
+it is neither necessary nor sufficient.
 
 ## Failure Modes
 
-- **Marker idling.** Emitting GRRR and continuing with the same broken frame. Remedy: the
-  iron rules — every marker is an action contract; self-monitoring audits the pairing.
-- **Theatrical markers.** Colorful outbursts with no fixed meaning. Remedy: fix the
-  vocabulary; a marker is defined by its action, not its flavor.
-- **Checkpoint skipping.** PHEW without bookkeeping; the "verified" result is later
-  misremembered. Remedy: no marker without its one-line record.
-- **Contradiction averaging.** Blending two colliding claims into mush instead of rolling
-  back. Remedy: WRONG forces rollback to the last verified checkpoint — never blend.
-- **Surrender drift.** Replacing a marker with a summary of effort ("this is quite hard…")
-  and coasting to an answer. Remedy: the persistence clause — the licensed moves are
-  shift, shift, or shift; vagueness is a red flag for `j-space-self-monitoring`.
+- **Marker idling:** the same work continues. Execute the contract or delete the marker.
+- **Theatrical escalation:** outbursts grow while actions do not. Return to neutral labels.
+- **False checkpoint:** relief is recorded as proof. Name evidence.
+- **Contradiction blending:** incompatible claims survive together. Roll back.
+- **Rapid oscillation:** states alternate without evidence. Enforce hysteresis.
+- **Surrender drift:** difficulty becomes a vague final answer. Choose a licensed shift.
+
+## Optional Marker Audit
+
+When the suite repository is intact, use the
+[suite controller](../scripts/jspace_control.py) `marker-audit` command to check that a visible
+marker covers every group in its action contract. Supply a manual pass only after verifying the
+resulting artifact; contract terms alone cannot prove that the action completed.
+
+## Handoff
+
+- empirical shift → `j-space-empirics`
+- reset and chronic drift → `j-space-self-monitoring`
+- checkpoint storage → `j-space-broadcast`
+- overload during state transition → `j-space-capacity`
+
+
+
+
+
+
+
+
